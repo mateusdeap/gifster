@@ -1,0 +1,9 @@
+<ul>
+  <% @gif.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<%= form_with model: @gif do |gif_form| %>
+  <%= gif_form.file_field :image, required: true %>
+  <%= gif_form.submit "Submit" %>
+<% end %>

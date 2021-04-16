@@ -1,0 +1,10 @@
+<% if flash[:success].present? %>
+  <p><%= flash[:success] %></p>
+<% end %>
+<%= link_to "Add Gif", new_gif_path %>
+<br>
+<% @gifs.each do |gif| %>
+  <% if gif.image.attached? %>
+    <%= image_tag gif.image %>
+  <% end %>
+<% end %>
