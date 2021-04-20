@@ -6,10 +6,9 @@ class Gif < ApplicationRecord
   def image_size
     if image.attached?
       if image.blob.byte_size > 1_000_000
-        errors[:image] << 'too big'
+        errors.add(:image, message: 'too big')
       elsif !image.blob.content_type.starts_with?('image/gif')
-        image.purge
-        errors[:image] << 'wrong format'
+        errors.add(:image, message: 'wrong format')
       end
     end
   end
